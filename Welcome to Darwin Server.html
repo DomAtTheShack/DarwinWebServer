@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome to Darwin Server</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+	<body data-extension-installed="2.3.0">
+		<header>
+			<section style="">
+				<h1 Style=" margin: 0%; display: flex;
+  justify-content: center;
+  align-items: center;">Welcome to Darwin Server </h1>
+				<p style="float: left;">Your gateway to the World Wide Web</p>
+				<img src="favicon.ico" alt="Website Icon" style=" margin-left: 1vw;">
+			</section>
+			<section style="background-color: #eeeeee; font-size:3vh; border-top: 2px dashed black; border-bottom: 2px dashed black; text-align:center; padding: .5%">
+				<a href="Upload.html" style="margin-right: 2vw; " > Upload</a>
+				<a href="Upload.html" style="margin-right: 2vw;"> File Browser</a>
+				<a href="Upload.html" style="margin-right: 2vw;"> Login/Register</a>
+				<a href="Upload.html" style="margin-right: 2vw;"> About this Server</a>
+
+			</section>
+
+		</header>
+		<main> 
+			<section class="content">
+				<h2>Upload a File</h2>
+				<form action="upload.php" method="post" enctype="multipart/form-data">
+					<input type="file" name="fileToUpload" id="fileToUpload">
+					<input type="submit" value="Upload File" name="submit">
+            	</form>
+ 			</section>
+		</main><footer> <p> © 2022 Darwin Server. All rights reserved.</p> </footer>
+
+	</body>
+</html>
