@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Darwin Server</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="serverImages/favicon.ico" type="image/x-icon">
 </head>
 <body data-extension-installed="2.3.0">
 <header>
@@ -19,8 +19,8 @@ session_start();
             <p>Your gateway to the World Wide Web</p>
         </div>
         <div>
-            <a href="DarwinHome.html">
-                <img src="favicon.ico" alt="Website Icon">
+            <a href="LoginHome.php">
+                <img src="serverImages/favicon.ico" alt="Website Icon">
             </a>
 
         </div>
@@ -31,7 +31,6 @@ session_start();
         <a href="Upload.html" style="margin-right: 2vw;"> Login/Register</a>
         <a href="Upload.html" style="margin-right: 2vw;"> About this Server</a>
         <?php
-        session_start();
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             header("location: LoginRedirect.php");
             exit;

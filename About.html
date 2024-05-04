@@ -12,6 +12,7 @@
 <header>
     <section class="header-container">
         <div>
+
             <h1>Welcome to Darwin Server </h1>
             <p>Your gateway to the World Wide Web</p>
         </div>
@@ -29,32 +30,17 @@
     </section>
 </header>
 <main>
-    <form method="POST" action="login.php">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="pwd">Password:</label><br>
-        <input type="password" id="pwd" name="password" required><br>
-        <input type="submit" value="Submit">
-    </form>
-
-    <form action="register.php" method="post">
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname"><br>
-
-        <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname"><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
-
-        <label for="largeInput">Comments for me:</label><br>
-        <textarea id="largeInput" name="largeInput" rows="4" cols="50" optional></textarea>
-
-        <input type="submit" name="send" value="Submit">
-    </form>
+    <section class="content" style="display: flex; justify-content: space-between;">
+        <div class="text-section">
+            <h1>About my crap server!</h1>
+            <p>This server is somehow running on old computer parts I've gotten around my house!<br> Also, there is so much dust on this thing it practically a fossil and yes that is an Apple airport Extreme on top.<br>
+                Here are the specs for this thing. <br>CPU: Ryzen 5 3600 <br>GPU: MSI GT 710  <br>RAM: Somehow running with 8GBs of RAM <br>Internet: Ethernet connection <br>PSU: 500watts<br>
+                Also, the glass blocking the components has broken so..........</p>
+        </div>
+        <div class="image-section" style="padding: 40px;">
+            <img src="serverImages/Server.jpg" alt="Piece of crap RIGHT HERE!!" style="max-width: 100%; height: auto; display: block;">
+        </div>
+    </section>
 </main>
 <footer class="footer"><p> © 2022 Darwin Server. All rights reserved.</p></footer>
 </body>

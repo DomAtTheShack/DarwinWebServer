@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Darwin Server</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="serverImages/favicon.ico" type="image/x-icon">
 </head>
 <body data-extension-installed="2.3.0">
 <header>
@@ -16,8 +16,8 @@
             <p>Your gateway to the World Wide Web</p>
         </div>
         <div>
-            <a href="DarwinHome.html">
-                <img src="favicon.ico" alt="Website Icon">
+            <a href="index.html">
+                <img src="serverImages/favicon.ico" alt="Website Icon">
             </a>
         </div>
     </section>
@@ -25,7 +25,7 @@
         <a href="Upload.php" style="margin-right: 2vw;"> Login/Register</a>
         <a href="Upload.php" style="margin-right: 2vw;"> Upload</a>
         <a href="Upload.php" style="margin-right: 2vw;"> File Browser</a>
-        <a href="Upload.php" style="margin-right: 2vw;"> About this Server</a>
+        <a href="About.html" style="margin-right: 2vw;"> About this Server</a>
     </section>
 </header>
 <main>
@@ -34,7 +34,7 @@
         session_start();
 
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-            header("location: DarwinHome.html");
+            header("location: LoginHome.php");
             exit;
         }
 
@@ -75,7 +75,7 @@
                     $_SESSION["loggedin"] = true;
                     $_SESSION["username"] = $username;
                     unset($_SESSION["failed_login_count"]);
-                    header("location: DarwinHome.html");
+                    header("location: LoginHome.php");
                 } else {
                     $_SESSION["failed_login_count"] = isset($_SESSION["failed_login_count"]) ? $_SESSION["failed_login_count"] + 1 : 1;
 
