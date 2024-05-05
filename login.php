@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -31,19 +34,17 @@
 <main>
     <section class="content">
         <?php
-        session_start();
-
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             header("location: LoginHome.php");
             exit;
         }
 
-        require 'vendor/autoload.php';
+        require __DIR__ . '/vendor/autoload.php';
 
         $dotenv = Dotenv\Dotenv::createImmutable("/Users/dominichann/WebstormProjects/DarwinWebServer/", "pass.env");
         $dotenv->load();
 
-        $config = parse_ini_file('pass.env');
+        $config = parse_ini_file(__DIR__ . '/pass.env');
 
         $dbhost = $config['DB_HOST'];
         $dbuser = $config['DB_USER'];

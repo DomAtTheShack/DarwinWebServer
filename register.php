@@ -32,13 +32,14 @@
 <main>
     <section class="content">
         <?php
+        session_start();
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
 
-        require 'phpMailer/src/Exception.php';
-        require 'phpMailer/src/PHPMailer.php';
-        require 'phpMailer/src/SMTP.php';
-        require 'vendor/autoload.php';
+        require __DIR__ . '/vendor/autoload.php';
+        require __DIR__ . '/phpMailer/src/Exception.php';
+        require __DIR__ . '/phpMailer/src/PHPMailer.php';
+        require __DIR__ . '/phpMailer/src/SMTP.php';
 
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
@@ -57,7 +58,7 @@
                     $dotenv = Dotenv\Dotenv::createImmutable("/Users/dominichann/WebstormProjects/DarwinWebServer/", "pass.env");
                     $dotenv->load();
 
-                    $config = parse_ini_file('pass.env');
+                    $config = parse_ini_file(__DIR__ . '/pass.env');
 
                     $mail->Username = $config['MAIL_USERNAME'];
                     $mail->Password = $config['MAIL_PASSWORD'];
@@ -93,11 +94,26 @@
                     $mail->send();
                 }catch (Exception $e) {
                     echo "There was an error sending the email. Mailer error: " . $mail->ErrorInfo;
+                    echo '<script type="text/javascript">
+                            setTimeout(function(){
+                            window.location.href = "index.html";
+                            }, 5000);
+                        </script>';
                     exit;
                 }
                 echo "Registration information was sent to the email successfully.";
+                echo '<script type="text/javascript">
+                            setTimeout(function(){
+                            window.location.href = "index.html";
+                            }, 5000);
+                        </script>';
             } catch (Exception $e) {
                 echo "There was an error sending the email.";
+                echo '<script type="text/javascript">
+                            setTimeout(function(){
+                            window.location.href = "index.html";
+                            }, 5000);
+                        </script>';
             }
         }
         ?>

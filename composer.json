@@ -1,0 +1,13 @@
+{
+  "require": {
+    "cboden/ratchet": "^0.4",
+    "phpseclib/phpseclib": "^3.0",
+    "vlucas/phpdotenv": "^5.6@dev"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Your\\WebSocket\\": "WebSocket"
+    }
+  }
+}
