@@ -70,6 +70,25 @@ table.milk-header {
   margin-top: 0.2em;
 }
 
+.option-button {
+  width: 16px; /* Adjust width as needed */
+  height: 12px; /* Adjust height as needed */
+  background-color: #008;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.option-button:hover {
+  background-color: #005;
+}
+
 table.milk-header td {
   padding-left: 1em;
   padding-right: 1em;

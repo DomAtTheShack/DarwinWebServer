@@ -26,10 +26,10 @@ session_start();
         </div>
     </section>
     <section style="background-color: #eeeeee; font-size:3vh; border-top: 2px dashed black; border-bottom: 2px dashed black; text-align:center; padding: .5%">
+        <a href="login.html" style="margin-right: 2vw;"> Login/Register</a>
         <a href="Upload.php" style="margin-right: 2vw;"> Upload</a>
-        <a href="Upload.html" style="margin-right: 2vw;"> File Browser</a>
-        <a href="Upload.html" style="margin-right: 2vw;"> Login/Register</a>
-        <a href="Upload.html" style="margin-right: 2vw;"> About this Server</a>
+        <a href="FileBrowser.php" style="margin-right: 2vw;"> File Browser</a>
+        <a href="About.html" style="margin-right: 2vw;"> About this Server</a>
         <?php
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             header("location: LoginRedirect.php");
