@@ -1,10 +1,11 @@
-<?php
-session_start();
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: LoginRedirect.php");
-    exit;
-}
-?>
+        <?php
+	session_start();
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+            //header("location: LoginRedirect.php");
+            //exit;
+        }
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +96,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
     }
 
-    $base_dir = 'serverImages'; // Change this to the base directory you want to browse
+    $base_dir = 'serverRoot'; // Change this to the base directory you want to browse
     $images_folder = 'serverImages'; // Folder where your images are located
 
     if(isset($_GET['dir'])) {
@@ -135,58 +136,44 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     // List files
     echo '<table class="file-browser">';
-    echo '<tr>';
-    echo '<th>Name</th>';
-    echo '<th>Date</th>';
-    echo '<th>Options</th>';
-    echo '</tr>';
+echo '<tr>';
+echo '<th>Name</th>';
+echo '<th>Date</th>'; // Add date column header
+echo '<th>Options</th>'; // Add options column header
+echo '</tr>';
 
-    foreach ($files as $file) {
-        if ($file == '.' || $file == '..') {
-            continue;
-        }
-        $file_path = $current_dir . '/' . $file;
-        echo '<tr>';
-        echo '<td>';
-        if (is_dir($file_path)) {
-            echo '<span class="file-icon" style="background-image: url(' . $images_folder . '/folder-icon.png);"></span>';
-            echo '<a href="?dir=' . urlencode($file_path) . '"><strong>' . $file . '</strong></a>';
-        } else {
-            $file_extension = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
-            $icon_path = '';
-            if (in_array($file_extension, array('txt', 'php', 'html', 'css', 'js'))) {
-                $icon_path = $images_folder . '/text-file-icon.png';
-            } elseif (in_array($file_extension, array('jpg', 'jpeg', 'png', 'gif'))) {
-                $icon_path = $images_folder . '/image-file-icon.png';
-            } elseif (in_array($file_extension, array('mp4', 'avi', 'mkv', 'mov'))) {
-                $icon_path = $images_folder . '/video-file-icon.png';
-            } else {
-                $icon_path = $images_folder . '/default-file-icon.png';
-            }
-            echo '<span class="file-icon" style="background-image: url(' . $icon_path . ');"></span>';
-            echo '<a href="' . $file_path . '">' . $file . '</a>';
-        }
-        echo '</td>';
-        echo '<td>';
-        if (is_file($file_path)) {
-            echo date("Y-m-d H:i:s", filemtime($file_path));
-        } else {
-            echo '-';
-        }
-        echo '</td>';
-        echo '<td>';
-        echo '<button class="option-button"></button>';
-        if (is_file($file_path)) {
-            echo '<button class="option-button"></button>';
-        } else {
-            echo '<button class="option-button"></button>';
-        }
-        echo '</td>';
-        echo '</tr>';
+foreach ($files as $file) {
+    if ($file == '.' || $file == '..') {
+        continue;
     }
+    $file_path = $current_dir . '/' . $file;
+    echo '<tr>';
+    echo '<td>';
+    if (is_file($file_path)) {
+        echo '<a href="' . $file_path . '">' . $file . '</a>'; // Display a clickable link for all files
+    } else {
+        echo '<a href="?dir=' . urlencode($file_path) . '"><strong>' . $file . '</strong></a>'; // Display directory as a clickable link
+    }
+    echo '</td>';
 
-    echo '</table>';
-    ?>
+    echo '<td>'; // Start date column
+    if (is_file($file_path)) {
+        // Display file modification date if it's a file
+        echo date("Y-m-d H:i:s", filemtime($file_path));
+    } else {
+        echo '-'; // Display a placeholder if it's not a file
+    }
+    echo '</td>'; // End date column
+
+    echo '<td>'; // Start options column
+    // You can add options buttons here
+    echo '</td>'; // End options column
+
+    echo '</tr>';
+}
+echo '</table>';
+?>
+
 </main>
 <footer class="footer"><p>© 2022 Darwin Server. All rights reserved.</p></footer>
 </body>
