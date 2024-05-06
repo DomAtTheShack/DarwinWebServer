@@ -1,10 +1,11 @@
-<?php
-session_start();
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: LoginRedirect.php");
-    exit;
-}
-?>
+        <?php
+	session_start();
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+            header("location: LoginRedirect.php");
+            exit;
+        }
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +96,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
     }
 
-    $base_dir = 'serverImages'; // Change this to the base directory you want to browse
+    $base_dir = 'serverRoot'; // Change this to the base directory you want to browse
     $images_folder = 'serverImages'; // Folder where your images are located
 
     if(isset($_GET['dir'])) {
