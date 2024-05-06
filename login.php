@@ -34,22 +34,26 @@ session_start();
 <main>
     <section class="content">
         <?php
+        error_reporting(E_ALL);
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             header("location: LoginHome.php");
             exit;
         }
 
+        // Additional debugging
+        var_dump($_POST);
+
         require __DIR__ . '/vendor/autoload.php';
 
-        $dotenv = Dotenv\Dotenv::createImmutable("/Users/dominichann/WebstormProjects/DarwinWebServer/", "pass.env");
+        $dotenv = Dotenv\Dotenv::createImmutable("/var/www/", "pass.env");
         $dotenv->load();
 
-        $config = parse_ini_file(__DIR__ . '/pass.env');
+        //$config = parse_ini_file(__DIR__ . 'pass.env');
 
-        $dbhost = $config['DB_HOST'];
-        $dbuser = $config['DB_USER'];
-        $dbpass = $config['DB_PASS'];
-        $dbname = $config['DB_NAME'];
+        $dbhost = $_ENV['DB_HOST'];
+        $dbuser = $_ENV['DB_USER'];
+        $dbpass = $_ENV['DB_PASS'];
+        $dbname = $_ENV['DB_NAME'];
 
         $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -102,4 +106,3 @@ session_start();
 <footer class="footer"><p> © 2022 Darwin Server. All rights reserved.</p></footer>
 </body>
 </html>
-

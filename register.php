@@ -33,7 +33,8 @@
     <section class="content">
         <?php
         session_start();
-        use PHPMailer\PHPMailer\PHPMailer;
+        use Dotenv\Dotenv;
+	use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
 
         require __DIR__ . '/vendor/autoload.php';
@@ -54,14 +55,13 @@
             $mail = new PHPMailer(true);
             try {
                 try {
-
-                    $dotenv = Dotenv\Dotenv::createImmutable("/Users/dominichann/WebstormProjects/DarwinWebServer/", "pass.env");
+                    $dotenv = Dotenv::createImmutable("/var/www/", "pass.env");
                     $dotenv->load();
 
-                    $config = parse_ini_file(__DIR__ . '/pass.env');
+                   // $config = parse_ini_file(__DIR__ . 'pass.env');
 
-                    $mail->Username = $config['MAIL_USERNAME'];
-                    $mail->Password = $config['MAIL_PASSWORD'];
+                    $mail->Username = $_ENV['MAIL_USERNAME'];
+                    $mail->Password = $_ENV['MAIL_PASSWORD'];
                     $mail->isSMTP();
                     $mail->Host = 'mail.domsmacshack.com';
                     $mail->SMTPAuth = true;
