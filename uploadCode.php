@@ -6,7 +6,7 @@
             header("location: LoginRedirect.php");
             exit;
         }
-        $targetDir = "uploads/"; $targetFile = $targetDir . basename($_FILES["fileToUpload"]["name"]);
+        $targetDir = "serverRoot/uploads/"; $targetFile = $targetDir . basename($_FILES["fileToUpload"]["name"]);
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
             echo "<h2 class='success'>File Uploaded Successfully!</h2>";
         } else {
