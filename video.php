@@ -1,17 +1,29 @@
 <?php
-// Path to the video file
-$video_path = 'C:\Users\ctehannd67\Downloads\B.mp4';
+if (isset($_GET['video'])) {
+    $video_path = $_GET['video'];
 
-// Set appropriate headers for video streaming
-header('Content-Type: video/mp4');
-header('Content-Length: ' . filesize($video_path));
+    if (file_exists($video_path)) {
+        header('Content-Type: video/mp4');
 
-// Open the video file
-$handle = fopen($video_path, 'rb');
+        $handle = fopen($video_path, 'rb');
+        if ($handle === false) {
+            echo "Error: Unable to open video file.";
+            exit;
+        }
 
-// Stream the video file
-fpassthru($handle);
+        // Omit Content-Length header for streamed content
+        // header('Content-Length: ' . filesize($video_path));
 
-// Close the file handle
-fclose($handle);
+        $streamed = fpassthru($handle);
+        if ($streamed === false) {
+            echo "Error: Failed to stream video file.";
+        }
+
+        fclose($handle);
+    } else {
+        echo "Error: Video file not found.";
+    }
+} else {
+    echo "Error: Video path not provided.";
+}
 ?>
