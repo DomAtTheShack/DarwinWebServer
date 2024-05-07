@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?php
 session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -5,6 +6,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 ?>
+=======
+        <?php
+
+        
+	session_start();
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+            header("location: LoginRedirect.php");
+            exit;
+        }
+        ?>
+
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
