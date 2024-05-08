@@ -3,8 +3,8 @@
         
 	session_start();
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-            //header("location: LoginRedirect.php");
-            //exit;
+            header("location: LoginRedirect.php");
+            exit;
         }
         ?>
 
@@ -15,49 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Browser</title>
     <style>
-        /* Your CSS styles here */
-        /* Include the font styles from your style.css file */
         <?php include 'style.css'; ?>
-
-        /* Additional styles for the file browser */
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        main {
-            flex: 1;
-            padding: 20px;
-            padding-bottom: 100px; /* Adjust this value as needed */
-        }
-        footer {
-            background-color: #eee;
-            padding: 10px;
-            text-align: center;
-            flex-shrink: 0; /* Prevent footer from shrinking */
-        }
-        /* Add borders to the table */
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #ddd;
-        }
     </style>
 </head>
 <body>
