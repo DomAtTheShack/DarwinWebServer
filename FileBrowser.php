@@ -1,13 +1,11 @@
-        <?php
+<?php
 
-        
-	session_start();
-        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-            //header("location: LoginRedirect.php");
-            //exit;
-        }
-        ?>
-
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    //  header("location: LoginRedirect.php");
+    //  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,8 +96,9 @@
         }
     }
 
-    $base_dir = 'serverRoot'; // Change this to the base directory you want to browse
-    $images_folder = 'serverImages'; // Folder where your images are located
+    $base_dir = 'serverImages/'; // Change this to the base directory you want to browse
+    $images_folder = 'serverImages/'; // Folder where your images are located
+    $isMedia = false;
 
     if(isset($_GET['dir'])) {
         $current_dir = $_GET['dir'];
@@ -138,45 +137,118 @@
 
     // List files
     echo '<table class="file-browser">';
-echo '<tr>';
-echo '<th>Name</th>';
-echo '<th>Date</th>'; // Add date column header
-echo '<th>Options</th>'; // Add options column header
-echo '</tr>';
-
-foreach ($files as $file) {
-    if ($file == '.' || $file == '..') {
-        continue;
-    }
-    $file_path = $current_dir . '/' . $file;
     echo '<tr>';
-    echo '<td>';
-    if (is_file($file_path)) {
-        echo '<a href="' . $file_path . '">' . $file . '</a>'; // Display a clickable link for all files
-    } else {
-        echo '<a href="?dir=' . urlencode($file_path) . '"><strong>' . $file . '</strong></a>'; // Display directory as a clickable link
-    }
-    echo '</td>';
-
-    echo '<td>'; // Start date column
-    if (is_file($file_path)) {
-        // Display file modification date if it's a file
-        echo date("Y-m-d H:i:s", filemtime($file_path));
-    } else {
-        echo '-'; // Display a placeholder if it's not a file
-    }
-    echo '</td>'; // End date column
-
-    echo '<td>'; // Start options column
-    // You can add options buttons here
-    echo '</td>'; // End options column
-
+    echo '<th>Name</th>';
+    echo '<th>Date</th>';
+    echo '<th>Options</th>';
     echo '</tr>';
-}
-echo '</table>';
-?>
 
+    foreach ($files as $file) {
+        if ($file == '.' || $file == '..') {
+            continue;
+        }
+        $file_path = $current_dir . '/' . $file;
+        echo '<tr>';
+        echo '<td>';
+        if (is_dir($file_path)) {
+            echo '<span class="file-icon" style="background-image: url(' . $images_folder . '/folder-icon.png);"></span>';
+            echo '<a href="?dir=' . urlencode($file_path) . '"style=" margin-left:10px"><strong>' . $file . '</strong></a>';
+        } else {
+            $file_extension = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+            switch ($file_extension) {
+                case 'txt':
+                case 'php':
+                case 'html':
+                case 'css':
+                case 'js':
+                    $icon_path = $images_folder . '/text-file-icon.png';
+                    break;
+                case 'jpg':
+                case 'jpeg':
+                case 'png':
+                case 'gif':
+                    $icon_path = $images_folder . '/image-file-icon.png';
+                    break;
+                case 'mp4':
+                case 'avi':
+                case 'mov':
+                case 'mkv':
+                    $icon_path = $images_folder . '/video-file-icon.png';
+                    echo '<span class="file-icon" style="background-image: url(' . $icon_path . ');"></span>';
+                    echo '<a href="videoPage.html?video=' . urlencode($file_path) . '">' . $file . '</a>';
+                    $isMedia = true;
+                    break;
+                default:
+                    $icon_path = $images_folder . '/default-file-icon.png';
+                    break;
+            }
+            if(!$isMedia) {
+                echo '<span class="file-icon" style="background-image: url(' . $icon_path . ');"></span>';
+                echo '<a  href="' . $file_path . '"style=" margin-left:10px";>' . $file . '</a>';
+                $isMedia = false;
+            }
+            $isMedia = false;
+        }
+        echo '</td>';
+        echo '<td>';
+        if (is_file($file_path)) {
+            echo date("Y-m-d H:i:s", filemtime($file_path));
+        } else {
+            echo '-';
+        }
+        echo '</td>';
+        echo '<td>';
+        echo '<button class="option-button"></button>';
+        if (is_file($file_path)) {
+            echo '<button class="option-button"></button>';
+        } else {
+            echo '<button class="option-button"></button>';
+        }
+        echo '</td>';
+        echo '</tr>';
+    }
+
+    echo '</table>';
+    ?>
 </main>
 <footer class="footer"><p>© 2022 Darwin Server. All rights reserved.</p></footer>
+<!-- Code injected by live-server -->
+<script>
+    // <![CDATA[  <-- For SVG support
+    if ('WebSocket' in window) {
+        (function () {
+            function refreshCSS() {
+                var sheets = [].slice.call(document.getElementsByTagName("link"));
+                var head = document.getElementsByTagName("head")[0];
+                for (var i = 0; i < sheets.length; ++i) {
+                    var elem = sheets[i];
+                    var parent = elem.parentElement || head;
+                    parent.removeChild(elem);
+                    var rel = elem.rel;
+                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                    }
+                    parent.appendChild(elem);
+                }
+            }
+            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+            var address = protocol + window.location.host + window.location.pathname + '/ws';
+            var socket = new WebSocket(address);
+            socket.onmessage = function (msg) {
+                if (msg.data == 'reload') window.location.reload();
+                else if (msg.data == 'refreshcss') refreshCSS();
+            };
+            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                console.log('Live reload enabled.');
+                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+            }
+        })();
+    }
+    else {
+        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+    // ]]>
+</script>
 </body>
 </html>
