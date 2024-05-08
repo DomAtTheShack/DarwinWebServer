@@ -35,7 +35,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </header>
     <main>
         <meta http-equiv="refresh" content="5;url=login.html" />
-        <h1>You are not logged in!</h1>
+        <h2>You are not logged in!</h2>
         <p>You will be redirected to the login page in 5 seconds...</p>
     </main>
     <footer class="footer"><p> © 2022 Darwin Server. All rights reserved.</p></footer>

@@ -5,8 +5,6 @@
   --font-family-body-serif: Aleo, serif;
   --font-family-body-sans:  Raleway, sans-serif;
   --font-family-heading:    Amaranth, sans-serif;
-  --font-family-cursive:    Redressed, sans-serif;
-  --font-family-mono:       Roboto Mono, monospace;
 }
 
 body {
@@ -21,13 +19,7 @@ body {
 
 :link, :visited {
   text-decoration: none;
-  color: #008;
-}
-
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
+  color: Purple;
 }
 
 .header-container {
@@ -43,11 +35,23 @@ body {
   margin: 1vw;
 }
 
-*.milk { font-variant: small-caps }
-
-h1, h2, h3, h4, h5, h6 {
+h1
+{
   font-family: var(--font-family-heading);
   line-height: 120%;
+  margin-left: 3.6vw;
+
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  line-height: 120%;
+  margin-left: 2vw;
+}
+
+p {
+  margin-left: 2vw;
+  font-size: 1.2em;
 }
 
  .footer {
@@ -59,16 +63,6 @@ h1, h2, h3, h4, h5, h6 {
  }
 
 
-code, tt {
-  font-family: var(--font-family-mono);
-  font-size: 90%;
-}
-
-table.milk-header {
-  width: 100%;
-  margin-bottom: 0.5em;
-  margin-top: 0.2em;
-}
 
 .option-button {
   width: 16px; /* Adjust width as needed */
@@ -86,118 +80,7 @@ table.milk-header {
 }
 
 .option-button:hover {
-  background-color: #005;
-}
-
-table.milk-header td {
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: center;
-}
-
-table.milk-header td:first-child {
-  vertical-align: top;
-  min-width: 100px;
-  width: 25%;
-  padding-top: 2em;
-  margin-top: 2em;
-}
-
-table.milk-header td h1 {
-  font-size: 24pt;
-  padding-bottom: 0.2em;
-}
-
-table.milk-header td h2 {
-  font-size: 18pt;
-  padding-bottom: 1em;
-}
-
-table.milk-header td h3 {
-  font-size: 12pt;
-  padding-bottom: 0.2em;
-}
-
-table.milk-header td h2.fancy {
-  font-family: var(--font-family-cursive);
-  font-style: italic;
-}
-
-table.milk-header td p {
-  font-size: 12pt;
-  font-style: italic;
-}
-
-table.footer {
-  border-collapse: collapse;
-  margin-top: 2em;
-  margin-bottom: 0;
-  padding-left: 1em;
-  padding-right: 1em;
-  border-top-style: solid;
-  border-top-color: #888;
-  width: 100%;
-  background-color: white;
-  font-size: 12pt;
-  font-family: var(--font-family-body-sans);
-}
-
-table.footer td {
-  padding-top: 0.5em;
-  padding-bottom: 0.2em;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  text-align: left;
-  vertical-align: top;
-  color: #888;
-}
-
-table.footer td + td {
-  text-align: right;
-}
-
-ul.main {
-  margin-left: 8em;
-}
-
-ul.main li {
-  margin-left: 1em;
-}
-
-p.main {
-  font-weight: bold;
-  padding-top: 10pt;
-  margin-left: 8em;
-}
-
-table.ad {
-  width: 100%;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-  border-collapse: collapse;
-  border-bottom-style: ridge;
-  border-bottom-color: white;
-  border-top-style: ridge;
-  border-top-color: white;
-}
-
-table.ad td {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  text-align: center;
-}
-
-table.ad td:first-child {
-  width: 75%;
-  min-width: 300px;
-}
-
-table.ad ins.adsbygoogle {
-  display: inline-block;
-  width: 600px;
-  height:150px;
+  background-color: DarkGrey;
 }
 
 @media only screen and (pointer: coarse) and (hover: none) {
@@ -207,29 +90,43 @@ table.ad ins.adsbygoogle {
     margin-right: 0.5em;
     font-weight: 400;
   }
+}
 
-  table.milk-header td h1 {
-    font-size: 18pt;
-  }
-
-  table.milk-header td h2 {
-    font-size: 14pt;
-  }
-
-  table.milk-header td h3 {
-    font-size: 12pt;
-  }
-
-  ul.main, p.main {
-    margin-left: 1em;
-    margin-right: 1em;
-  }
-
-  table.ad ins.adsbygoogle {
-    display: inline-block;
-    width: 300px;
-    height:120px;
-  }
-
-
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 100px; /* Adjust this value as needed */
+}
+footer {
+  background-color: #eee;
+  padding: 10px;
+  text-align: center;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}
+/* Add borders to the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #ddd;
 }
