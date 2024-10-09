@@ -1,0 +1,84 @@
+/* Center the form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px; /* Spacing around the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 300px; /* Set a fixed width for the form */
+    margin: auto; /* Center the section */
+}
+
+/* Style the form elements */
+form {
+    width: 100%; /* Take full width of the container */
+}
+
+label {
+    margin: 10px 0 5px; /* Space between label and input */
+    font-weight: bold; /* Make labels bold */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%; /* Make inputs fill the container */
+    padding: 10px; /* Space inside input */
+    margin-bottom: 15px; /* Space between inputs */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 15px; /* Space inside button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    width: 100%; /* Make the button full-width */
+    margin-top: 10px; /* Space above the button */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.button-container {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center the buttons */
+    margin-top: 10px; /* Space above the buttons */
+}
+
+.button-container input {
+    font-size: 19px; /* Font size for buttons */
+    margin: 0 10px; /* Horizontal spacing between buttons */
+    padding: 10px 20px; /* Padding inside buttons */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.button-container .back-button {
+    background-color: #FF4136; /* Red color for the Back button */
+    color: white; /* Button text color */
+}
+
+.button-container input[type="submit"] {
+    background-color: #007BFF; /* Blue color for the Submit button */
+    color: white; /* Button text color */
+}
+
+.button-container input:hover {
+    background-color: #0056b3; /* Darker blue on hover for Submit button */
+}
+
+.button-container .back-button:hover {
+    background-color: #C0392B; /* Darker red on hover for Back button */
+}

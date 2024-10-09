@@ -1,0 +1,55 @@
+/* Ensure the table has proper styling and a border */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black; /* Add border around the table */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Status colors for different scores */
+.status-good {
+    color: green !important; /* Use !important to ensure it overrides conflicting styles */
+}
+
+.status-ok {
+    color: orange !important; /* Use !important to ensure it overrides conflicting styles */
+}
+
+.status-bad {
+    color: red !important; /* Use !important to ensure it overrides conflicting styles */
+}
+
+/* Iframe container styles */
+.iframe-container {
+    width: 100%; /* Set width of the container to 100% */
+    max-width: 1200px; /* Set a maximum width */
+    margin: 20px auto; /* Center the container */
+    border: 2px solid black; /* Add border around the container */
+    padding: 10px; /* Add padding inside the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+    overflow: hidden; /* Ensure overflow is hidden to fit the iframe */
+}
+
+/* Make the iframe fill the container */
+iframe {
+    width: 100%; /* Make iframe take the full width of the container */
+    height: 1100px; /* Increase height of the iframe */
+    border: none; /* Remove border from the iframe */
+}
+
+/* Remove bottom margin for body */
+body {
+    margin: 0; /* Remove default margins */
+    padding-bottom: 50px; /* Optional: add padding at the bottom */
+}
+
+

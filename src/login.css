@@ -1,0 +1,72 @@
+/* Styles for the login page */
+
+.login-container {
+    background-color: white; /* White background for the main section */
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.login-form {
+    border: 2px solid black; /* Border around the form */
+    width: 30vw; /* Width of the form */
+    text-align: center; /* Center text inside the form */
+    padding: 20px; /* Padding inside the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #ffffff; /* White background for form */
+}
+
+h2 {
+    font-size: 50px; /* Font size for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+label {
+    font-size: 25px; /* Font size for labels */
+    margin: 10px 0; /* Vertical margin for labels */
+    display: block; /* Make labels block elements */
+}
+
+input[type="text"],
+input[type="password"] {
+    font-size: 25px; /* Font size for inputs */
+    margin: 10px 0; /* Vertical margin for inputs */
+    padding: 10px; /* Padding inside inputs */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+input[type="submit"] {
+    font-size: 19px; /* Font size for submit button */
+    margin: 10px 0; /* Vertical margin for button */
+    padding: 10px; /* Padding inside button */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.register-button {
+    margin-bottom: 5px; /* Space below the button */
+    font-size: 19px; /* Font size for register button */
+    padding: 10px; /* Padding inside register button */
+    background-color: #007BFF; /* Bootstrap primary color for consistency */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.register-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

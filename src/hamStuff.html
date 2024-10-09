@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Browser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="header"></div>
+<main>
+
+  <section class="content">
+    <h2 style="margin-left: 2vw">Welcome to my Ham Radio Page!<br><br></h2>
+    <p style="margin-left: 2vw">Hello W8TOO here, this page contains all of my Ham Radio cheat sheet stuff. From HF propagation to Sunlit Maps it has everything I'll and hopefully you need.</p>
+    <a href="freqStatus.html" style="margin-left: 2vw">Here is a frequency chart for your location along with PSK Reporter</a>
+  </section>
+
+
+  <div id="info-box" class="top-left-box">
+    <div id="coordinates">Coordinates: Fetching...</div>
+    <div id="grid-square">Grid Square: Fetching...</div>
+    <div id="time">Time: Fetching...</div>
+  </div>
+
+  <div class="solar-data-container">
+    <div class="solar-data">
+      <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
+        <img class="solar-gif left-gif" src="https://www.hamqsl.com/solarn0nbh.php" alt="Solar-Terrestrial Data">
+      </a>
+    </div>
+    <div class="solar-data">
+      <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
+        <img class="solar-gif right-gif" src="https://www.hamqsl.com/solarmuf.php" alt="Solar-Terrestrial Data">
+      </a>
+    </div>
+  </div>
+
+  <div id="tabs">
+    <div id="tab1" class="active" onclick="showContent(1)">US Amateur Radio Bands</div>
+    <div id="tab2" onclick="showContent(2)">Morse Code Diagram</div>
+    <div id="tab3" onclick="showContent(3)">Morse Code Decoder</div>
+    <div id="tab4" onclick="showContent(4)">Q-Codes</div>
+  </div>
+
+  <div id="content">
+    <img id="radio-bands" src="https://www.arrl.org/images/view//Charts/Band_Chart_Image_for_ARRL_Web.jpg" alt="US Amateur Radio Bands" style="display: block;">
+    <img id="morse-code" src="serverImages/morse-chart_grande.png" alt="Morse Code Diagram" style="display: none;">
+    <img id="morse-code-decode" src="serverImages/MorseDecode.gif" alt="Morse Code Decoder" style="display: none;">
+    <img id="qCodes" src="serverImages/Q-Codes.png" alt="Q-Codes" style="display: none;">
+  </div>
+
+  <script src="scripts.js"></script>
+</main>
+<div id="footer"></div>
+  <script src="format.js"></script>
+</body>
+</html>

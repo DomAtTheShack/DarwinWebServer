@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Frequency</title>
+
+  <!-- Default styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Custom styles that override defaults -->
+  <link rel="stylesheet" href="freqStyle.css">
+  <div id="header"></div>
+
+</head>
+
+<body>
+<div id="info-box" class="top-left-box">
+  <div id="coordinates">Coordinates: Fetching...</div>
+  <div id="grid-square">Grid Square: Fetching...</div>
+  <div id="time">Time: Fetching...</div>
+</div>
+
+<h2>PSK31 Best Frequency Recommendations for Sky wave Propagation</h2>
+
+<!-- Frequency table -->
+<table id="frequencyTable">
+  <thead>
+  <tr>
+    <th>Frequency (MHz)</th>
+    <th>Score</th>
+    <th>Spots</th>
+    <th>Amount of TXs</th>
+    <th>Amount of RXs</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Data will be injected here -->
+  </tbody>
+</table>
+
+<!-- Iframe container -->
+<div class="iframe-container">
+  <iframe src="https://pskreporter.info/pskmap.html" title="External Website"></iframe>
+</div>
+
+<script>
+  // Function to format the frequency in MHz with two decimal places
+  function formatFrequencyInMHz(freq) {
+    const freqInMHz = parseInt(freq) / 1000000;
+    return freqInMHz.toFixed(3) + ' MHz';
+  }
+
+  // Function to fetch and display the data
+  async function loadFrequencyData() {
+    try {
+      // Fetch data from your local CORS proxy
+      const response = await fetch('http://localhost:8080/https://pskreporter.info/cgi-bin/psk-freq.pl');
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.text();
+      const lines = data.trim().split("\n");
+      const filteredLines = lines.slice(0, -2);
+      const tableBody = document.querySelector("#frequencyTable tbody");
+
+      filteredLines.forEach(line => {
+        const [frequency, score, spots, tx, rx] = line.split(" ");
+        const formattedFrequency = formatFrequencyInMHz(frequency);
+        const row = document.createElement("tr");
+        let status = "status-good";
+
+        if (score < 10000) {
+          status = "status-bad";
+        } else if (score < 20000) {
+          status = "status-ok";
+        }
+
+        row.innerHTML = `
+        <td>${formattedFrequency}</td>
+        <td>${score}</td>
+        <td>${spots}</td>
+        <td>${tx}</td>
+        <td>${rx}</td>
+        <td class="${status}">${status.replace('status-', '')}</td>
+      `;
+        tableBody.appendChild(row);
+      });
+    } catch (error) {
+      console.error("Error fetching frequency data:", error);
+    }
+  }
+
+  window.onload = loadFrequencyData;
+
+
+  // Load the data when the page loads
+  window.onload = loadFrequencyData;
+</script>
+<div id="footer"></div>
+<script src="scripts.js"></script>
+<script src="format.js"></script>
+</body>
+</html>

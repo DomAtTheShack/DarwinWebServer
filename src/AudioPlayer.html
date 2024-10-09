@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Song Player</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .flex-container {
+            display: flex; /* Use flexbox for layout */
+            align-items: flex-start; /* Align items at the start */
+            margin-top: 20px; /* Space between the header and the container */
+        }
+
+        .info {
+            flex: 1; /* Take remaining space */
+            margin-right: 20px; /* Space between the info and the image */
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center; /* Center the image in its container */
+        }
+
+        .metadata-image {
+            max-width: 100%; /* Keep the image responsive */
+            height: auto;
+            border: 2px solid #333; /* Border around the metadata image */
+            border-radius: 8px; /* Optional: rounded corners */
+        }
+    </style>
+</head>
+<body>
+<div id="header"></div>
+<div class="container" id="app">
+    <h1>Song Player</h1>
+    <div class="flex-container">
+        <div class="info">
+            <audio controls id="audioPlayer">
+                <source id="audioSource" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div id="songInfo"></div>
+            <div id="noMetadataMessage" style="display: none; color: red;">No metadata available.</div>
+        </div>
+        <div class="image-container">
+            <img id="songImage" class="metadata-image" src="" alt="Song Image">
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+<script>
+    window.onload = function() {
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        const songInfo = document.getElementById('songInfo');
+        const songImage = document.getElementById('songImage');
+        const noMetadataMessage = document.getElementById('noMetadataMessage');
+
+        // Get song path from URL or default to "A Message from the Fairies"
+        const urlParams = new URLSearchParams(window.location.search);
+        const songPath = urlParams.get('song') || 'serverImages/A%20Message%20from%20the%20Faries.mp3';
+        audioSource.src = songPath;
+        audioPlayer.load(); // Load the new source
+
+        audioPlayer.addEventListener('loadedmetadata', function() {
+            const duration = audioPlayer.duration;
+            songInfo.innerHTML = `<p>Duration: ${duration.toFixed(2)} seconds</p>`;
+        });
+
+        audioPlayer.addEventListener('play', function() {
+            console.log("Attempting to read tags from:", audioSource.src);
+            jsmediatags.read(audioSource.src, {
+                onSuccess: function(tag) {
+                    console.log("Tags found:", tag);
+                    noMetadataMessage.style.display = 'none'; // Hide no metadata message
+
+                    // Clear previous song info
+                    songInfo.innerHTML = '';
+
+                    const title = tag.tags.title || "Unknown Title";
+                    const artist = tag.tags.artist || "Unknown Artist";
+                    const album = tag.tags.album || "Unknown Album";
+
+                    songInfo.innerHTML += `<p>Title: ${title}</p>`;
+                    songInfo.innerHTML += `<p>Artist: ${artist}</p>`;
+                    songInfo.innerHTML += `<p>Album: ${album}</p>`;
+
+                    const artwork = tag.tags.picture;
+                    if (artwork) {
+                        let base64String = "";
+                        for (let i = 0; i < artwork.data.length; i++) {
+                            base64String += String.fromCharCode(artwork.data[i]);
+                        }
+                        const base64 = "data:" + artwork.format + ";base64," + window.btoa(base64String);
+                        songImage.src = base64;
+                    } else {
+                        console.log("No artwork found");
+                        songImage.src = ""; // Clear the image if no artwork
+                        noMetadataMessage.style.display = 'block'; // Show no metadata message
+                    }
+                },
+                onError: function(error) {
+                    console.error("Error reading tags:", error);
+                    noMetadataMessage.style.display = 'block'; // Show no metadata message
+                }
+            });
+        });
+    }
+</script>
+<div id="footer"></div>
+<script src="format.js"></script>
+</body>
+</html>

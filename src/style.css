@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&family=Redressed&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --font-family-body:       Aleo, serif;
+  --font-family-body-serif: Aleo, serif;
+  --font-family-body-sans:  Raleway, sans-serif;
+  --font-family-heading:    Amaranth, sans-serif;
+}
+
+body {
+  margin-top: 2em;
+  margin-left:0;
+  margin-right: 0;
+  font-family: var(--font-family-body);
+  font-weight: 300;
+  font-size: 14pt;
+  line-height: 120%;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.loading-bar {
+  width: 100%;
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  height: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 20px;
+  display: none; /* Hide by default */
+}
+
+#loadingProgress {
+  height: 100%;
+  width: 0;
+  background-color: #4caf50;
+  text-align: center;
+  line-height: 25px; /* Same as the height of the loading bar */
+  color: white;
+  border-radius: 5px;
+}
+
+:link, :visited {
+  text-decoration: none;
+  color: Purple;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.header-container img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1vw;
+}
+
+h1
+{
+  font-family: var(--font-family-heading);
+  line-height: 120%;
+  margin-left: 3.6vw;
+
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  line-height: 120%;
+  margin-left: 2vw;
+}
+
+p {
+  margin-left: 2vw;
+  font-size: 1.2em;
+}
+
+ .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+ }
+
+
+
+.option-button {
+  width: 16px; /* Adjust width as needed */
+  height: 12px; /* Adjust height as needed */
+  background-color: #008;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.main-content {
+  float: right; /* Move the video player to the right */
+  border: 6px solid black; /* Add border */
+  width: 720px; /* Set width */
+  height: 480px; /* Set height */
+  margin-right: 8vw; /* Adjust margin as needed */
+}
+
+.video-js.vjs-default-skin {
+  outline: none;
+}
+
+.navigation-links {
+  background-color: #eeeeee;
+  font-size: 3vh;
+  border-top: 2px dashed black;
+  border-bottom: 2px dashed black;
+  text-align: center;
+  padding: .5%;
+}
+
+.navigation-links a {
+  margin-right: 2vw;
+}
+
+
+.option-button:hover {
+  background-color: DarkGrey;
+}
+
+@media only screen and (pointer: coarse) and (hover: none) {
+  body {
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    font-weight: 400;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 100px; /* Adjust this value as needed */
+}
+footer {
+  background-color: #eee;
+  padding: 10px;
+  text-align: center;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}
+/* Add borders to the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #ddd;
+}
+
+/* Navigation Links */
+.navigation-links {
+  background-color: #eeeeee;
+  font-size: 3vh;
+  border-top: 2px dashed black;
+  border-bottom: 2px dashed black;
+  text-align: center;
+  padding: .5%;
+}
+
+.navigation-links a {
+  margin-right: 2vw;
+}
+
+/* Path Bar */
+.path-bar-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.path-bar {
+  display: flex;
+  align-items: center;
+}
+
+.path-bar a {
+  margin-right: 5px;
+}
+
+/* Spacer */
+.spacer {
+  height: 20px;
+}
+
+/* Search Bar */
+.search-bar-container {
+  width: 100%;
+  text-align: center;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 20%;
+}
+
+/* Buttons */
+.buttons-form {
+  margin-left: 10px;
+}
+
+.option-button {
+  width: 20px; /* Adjust as needed */
+  height: 20px; /* Adjust as needed */
+  margin-right: 5px;
+  background-size: cover;
+  border: none;
+}
+
+.option-icon {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#searchInput{
+  height: 100%;
+  border-radius: 15px;
+
+}
+
+.solar-data-container {
+  display: flex;
+  justify-content: flex-start; /* Aligns items to the left */
+  margin: 20px 0;
+}
+
+.solar-data {
+  margin: 0 140px;
+}
+
+.left-gif {
+  width: 200%; /* Smaller width for vertical image */
+  max-width: 300px; /* Set a max width for left GIF */
+}
+
+.right-gif {
+  width: 300%; /* Larger width for right image */
+  max-width: 1600px; /* Increase max width for right GIF */
+}
+
+#tabs {
+  display: flex;
+  justify-content: center; /* Horizontally centers the tabs */
+  gap: 10px; /* Adds some space between the tabs */
+  margin-bottom: 20px; /* Adds space between tabs and content */
+}
+
+/* Each tab's style */
+#tabs div {
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Active tab style */
+#tabs div.active {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+/* Content area styling */
+#content {
+  text-align: center; /* Center the content */
+}
+
+/* Image styling */
+#content img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+/* Updated box for Coordinates, Grid Square, and Time */
+.top-left-box {
+  position: fixed; /* Changed to fixed */
+  top: 10px;
+  left: 10px;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 1.2em;
+  z-index: 1000; /* Ensure it appears on top of other content */
+}
+
+
+#info-box div {
+  margin-bottom: 8px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.audio-info {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+.metadata-image {
+  margin-left: 20px; /* Space between audio info and image */
+  max-width: 100%; /* Keep the image responsive */
+  height: auto;
+  border: 2px solid #333; /* Border around the metadata image */
+  border-radius: 8px; /* Optional: rounded corners */
+}

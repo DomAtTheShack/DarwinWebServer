@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Browser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="header"></div>
+<main>
+    <div class="video-container">
+        <link href="//vjs.zencdn.net/8.3.0/video-js.min.css" rel="stylesheet">
+        <h1 style="width: 30vw; float: left; text-align: center;">Video Streaming</h1>
+        <!-- Provide fallback video sources -->
+        <video id="videoPlayer" class="video-js vjs-default-skin" autoplay preload="auto" width="920" height="540" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;">
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video. Now loading PHP video player, support is not the best.</a>
+            </p>
+            <!-- Provide fallback sources for browsers that do not support HTML5 video -->
+            <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+            <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
+            <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+            <!-- Fallback to the video.php file -->
+            <iframe src="video.php" width="920" height="540" frameborder="0" allowfullscreen></iframe>
+        </video>
+    </div>
+
+    <script src="//vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let videoPath = urlParams.get('video');
+
+            if (videoPath) {
+                // Replace double slashes with a single slash
+                videoPath = videoPath.replace(/\/\//g, '/');
+
+                // Check the file extension
+                const fileExtension = videoPath.split('.').pop();
+
+                if (fileExtension === 'mkv') {
+                    // Redirect to convert.php if it's an MKV file
+                    // window.location.href = 'convert.php?video=' + encodeURIComponent(videoPath);
+                } else {
+                    const videoPlayer = videojs('videoPlayer', {
+                        autoplay: true,
+                        controls: true,
+                        sources: [{
+                            src: videoPath, // Remove encodeURIComponent here
+                            type: 'video/' + fileExtension // Use the file extension to determine the video type
+                        }]
+                    });
+
+                }
+            } else {
+                console.error('Video path not provided.');
+            }
+        });
+    </script>
+
+
+</main>
+<div id="footer"></div>
+<script src="HTML%20Extra/format.js"></script>
+</body>
+</html>

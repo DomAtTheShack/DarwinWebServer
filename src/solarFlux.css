@@ -1,0 +1,32 @@
+body {
+    text-align: center; /* Center all text in the body */
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
+img {
+    pointer-events: none;
+}
+
+iframe {
+    border: 3px solid #000; /* Add a 3px black border */
+    border-radius: 8px;     /* Optional: Add rounded corners */
+    margin-bottom: 20px;    /* Add some space below the iframe */
+}
+
+h2 {
+    text-align: center;     /* Ensure the headings are centered */
+}
+
+p {
+    font-size: 0.9em;       /* Make the copyright notice smaller */
+    color: #555;            /* Use a gray color for copyright text */
+    margin-bottom: 15px;    /* Add space between copyright and iframe */
+}
