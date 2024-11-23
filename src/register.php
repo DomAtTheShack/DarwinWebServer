@@ -13,25 +13,30 @@
     <section class="content">
         <?php
         session_start();
-
+        echo "Start";
         use Dotenv\Dotenv;
         use PHPMailer\PHPMailer\Exception;
         use PHPMailer\PHPMailer\PHPMailer;
-
+        echo "Start1.5";
         require __DIR__ . '/vendor/autoload.php';
         require __DIR__ . '/vendor/phpMailer/phpmailer/src/Exception.php';
         require __DIR__ . '/vendor/phpMailer/phpmailer/src/PHPMailer.php';
         require __DIR__ . '/vendor/phpMailer/phpmailer/src/SMTP.php';
+        echo "Start2";
 
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
+        echo "Start3";
 
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             header("location: LoginHome.php");
             exit;
         }
+        echo "Start4";
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            echo "Start5";
 
             $mail = new PHPMailer(true);
             try {
@@ -40,14 +45,13 @@
                     $dotenv->load();
 
                    // $config = parse_ini_file(__DIR__ . 'pass.env');
+                    echo "Start6";
 
                     $mail->Username = $_ENV['MAIL_USERNAME'];
                     $mail->Password = $_ENV['MAIL_PASSWORD'];
                     $mail->isSMTP();
                     $mail->Host = 'mail.domsmacshack.com';
                     $mail->SMTPAuth = true;
-                    echo getenv('MAIL_USERNAME');
-                    echo getenv('MAIL_PASSWORD');
                     $mail->SMTPSecure = 'tls';
                     $mail->Port = 587;
 
