@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="callsign.css"> <!-- Link your CSS file -->
+    <title>Callsign Checker</title>
+</head>
+<body>
+<div class="callsign-container">
+    <h1>Callsign Checker</h1>
+    <form method="POST" onsubmit="parseFCC(event);">
+        <label>
+            <textarea id="callsigns" name="callsigns" placeholder="Enter callsign..." required></textarea>
+        </label>
+        <button type="submit">Check Callsigns</button>
+    </form>
+    <div class="results">
+        <h2>Results</h2>
+        <div class="result-list"></div>
+        <button class="back-button" onclick="goBack()">← Back</button>
+    </div>
+</div>
+
+<script src="parse.js"></script> <!-- Link your JS file -->
+</body>
+</html>
