@@ -13,7 +13,7 @@
     <section class="content">
         <!-- Add content to your main section here-->
         <?php
-        echo "<h1>Welcome {$_SESSION['username']} to Darwin Server </h1>";
+        echo "<h1>Welcome {$_SESSION["username"]} to Darwin Server </h1>";
         ?>
         <p>This website serves as a central platform primarily utilized by myself, Hot Karl, and potentially Jorge. Its security is complete crap, feel free to explore and utilize its features.</br></br>
             It's worth noting that the server's name, "Darwin," pays homage to Darwin Raglan Caspian Ahab Poseidon Nicodemius Watterson the 3rd not the Scientist.</br></br>
