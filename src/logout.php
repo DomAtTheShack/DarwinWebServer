@@ -1,9 +1,9 @@
 <?php
+session_start();       // 1. Resume the session
+session_unset();       // 2. Clear all variables
+session_destroy();     // 3. Destroy the session data
 
-if (isset($_POST['logout'])) {
-    session_start();
-    session_unset();
-    session_destroy();
-    header('Location: index.html');
-    exit();
-}
+
+header('Location: index.html'); // 4. Redirect
+exit();
+?>
